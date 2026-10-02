@@ -11,6 +11,7 @@ Every skill in this repo follows one principle: **automation with guardrails**.
 - **commit — never commit past a risk unattended.** Fully automatic by default; secrets, unrelated files, and dependency changes always pause for confirmation.
 - **reply-polish — over-polishing is failure.** Edits are subtractive: the author's voice and stance survive the edit; AI tone and bureaucratic filler don't.
 - **simplify — behavior never changes.** Every simplification is validated with lint, types, or tests; if it can't be proven safe, it isn't made.
+- **skill-manager — no install passes a security gate it can't clear.** Security is a hard gate, not a scored item; an install that can't be fully verified is never reported as done.
 
 ## Skills
 
@@ -19,6 +20,7 @@ Every skill in this repo follows one principle: **automation with guardrails**.
 | [commit](skills/commit/SKILL.md) | Analyze Git changes, write a conventional commit message, auto-split per feature when themes don't mix. | 中文 |
 | [reply-polish](skills/reply-polish/SKILL.md) | Polish a draft Chinese workplace reply so it sounds natural, professional, and like the author. | 中文 |
 | [simplify](skills/simplify/SKILL.md) | Simplify recently changed code for clarity and reuse without changing behavior. | English |
+| [skill-manager](skills/skill-manager/SKILL.md) | Full lifecycle management of Agent Skills: multi-source discovery, dedup, four-dimension evaluation with a security hard gate, install/update/uninstall via the skills CLI, and cross-agent link diagnostics. | 中文 |
 
 ### commit
 
@@ -37,6 +39,12 @@ Takes an already-written draft — IM, email, or comment — and keeps the autho
 Reviews what changed through three lenses (reuse, quality, efficiency) and simplifies with restraint — verified with lint, types, or tests before finishing.
 
 > Triggers: "simplify this" · "clean up the changes" · "refactor before commit"
+
+### skill-manager
+
+Runs one chain end to end: discover across multiple sources → dedupe to upstream provenance → evaluate on four dimensions (fit, quality, security, practicality) → install / update / remove through the `npx skills` CLI, then verify canonical placement and every agent symlink. Security is a hard gate, not a scored item.
+
+> Triggers: "find a skill for X" · "install this skill" · "update installed skills" · "check skill status" · "skill manager"
 
 ## Install
 
